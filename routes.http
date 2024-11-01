@@ -1,0 +1,6 @@
+POST http://localhost:/metas
+Content-Type: application/json
+
+{
+  "nome_meta": "academia"
+}

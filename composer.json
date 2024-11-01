@@ -1,0 +1,20 @@
+{
+    "name": "laboratorio/gerenciador-de-metas",
+    "description": "Trabalho/P2 Felipe",
+    "require": {
+        "phpunit/phpunit": "^11.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laboratorio\\GerenciadorDeMetas\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laboratorio\\GerenciadorDeMetas\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
