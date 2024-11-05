@@ -17,4 +17,8 @@ O público-alvo do projeto são pessoas que desejam manter controle sobre suas m
 ## Tecnologias Utilizadas
 - **Backend:** PHP, PostgreSQL
 - **Frontend:** HTML, CSS, JavaScript 
+
 php -S localhost:8000 -t public
+
+![image](https://github.com/user-attachments/assets/95b7d0b7-f8e7-4eba-912a-b2355982c648)
+
