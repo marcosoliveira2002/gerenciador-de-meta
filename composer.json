@@ -1,20 +1,17 @@
 {
-    "name": "laboratorio/gerenciador-de-metas",
-    "description": "Trabalho/P2 Felipe",
+    "name": "junio/gerenciador-de-meta",
     "require": {
         "phpunit/phpunit": "^11.4"
     },
     "autoload": {
         "psr-4": {
-            "Laboratorio\\GerenciadorDeMetas\\": "app/"
+            "app\\": "app/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Laboratorio\\GerenciadorDeMetas\\Tests\\": "tests/"
+    "authors": [
+        {
+            "name": "Marcos Oliveira",
+            "email": "oliveiraregojunior@gmail.com"
         }
-    },
-    "scripts": {
-        "test": "phpunit"
-    }
+    ]
 }
