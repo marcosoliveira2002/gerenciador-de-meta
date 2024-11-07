@@ -3,7 +3,8 @@
 function load(string $controller, string $action)
 {
   try {
-    $controllerNamespace = "app\\controllers\\{$controller}";
+
+    $controllerNamespace = "App\\Controllers\\{$controller}";
 
     if (!class_exists($controllerNamespace)) {
       throw new Exception('Rota não encontrada');
@@ -12,18 +13,21 @@ function load(string $controller, string $action)
     $controllerInstance = new $controllerNamespace;
 
     if (!method_exists($controllerInstance, $action)) {
-      throw new Exception('Metodo não existe');
+      throw new Exception('Método não existe');
     }
 
     $jsonInput = file_get_contents('php://input');
     $postVars = json_decode($jsonInput, true);
 
-    if (json_last_error() !== JSON_ERROR_NONE) {
+
+    if (json_last_error() !== JSON_ERROR_NONE && $_SERVER['REQUEST_METHOD'] === 'POST') {
       throw new Exception('JSON inválido');
     }
 
+    $params = $_SERVER['REQUEST_METHOD'] === 'GET' ? $_GET : $postVars;
 
-    $controllerInstance->$action((object)$postVars);
+
+    $controllerInstance->$action($params);
 
   } catch (Exception $e) {
     echo $e->getMessage();
@@ -33,12 +37,17 @@ function load(string $controller, string $action)
 
 $routes = [
   "GET" => [
-    "/usuarios" => fn() => load("LoginUsuario", "validaLogin")
+    "/metas" => fn() => load("RelatorioDeMetasDoUsuario", "listarMetas"),
   ],
   "POST" => [
-    "/usuarios" => fn() => load("CadastroDeUsuario", "CadastroUsuario")
+    "/usuarios" => fn() => load("CadastroDeUsuario", "CadastroUsuario"),
+    "/metas" => fn() => load("CadastroDeMetas", "CadastroMeta"),
+    "/usuarioLogin" => fn() => load("LoginUsuario", "validaLogin")
   ],
   "PUT" => [
 
   ],
+  "DELETE" => [
+    "/metas" => fn() => load("DeletarMeta", "deletar"),
+  ]
 ];

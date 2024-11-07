@@ -1,6 +1,7 @@
-POST http://localhost:/metas
+POST http://localhost:8000/usuario
 Content-Type: application/json
 
 {
-  "nome_meta": "academia"
+ "login_usuario" : "Marcos",
+ "senha": "teste"
 }

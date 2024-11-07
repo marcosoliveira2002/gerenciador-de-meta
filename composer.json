@@ -1,11 +1,12 @@
 {
     "name": "junio/gerenciador-de-meta",
     "require": {
-        "phpunit/phpunit": "^11.4"
+        "phpunit/phpunit": "^11.4",
+        "firebase/php-jwt": "^6.10"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "app/"
+            "App\\": "app/"
         }
     },
     "authors": [
