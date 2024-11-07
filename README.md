@@ -33,6 +33,7 @@ php -S localhost:8000 -t public
     "/metas" => fn() => load("CadastroDeMetas", "CadastroMeta"),
     "/usuarioLogin" => fn() => load("LoginUsuario", "validaLogin")
   ],
+##
   "PUT" => [
 ##
   ],
