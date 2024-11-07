@@ -23,18 +23,18 @@ php -S localhost:8000 -t public
 ![image](https://github.com/user-attachments/assets/95b7d0b7-f8e7-4eba-912a-b2355982c648)
 
 
-
-
+##
   "GET" => [
     "/metas" => fn() => load("RelatorioDeMetasDoUsuario", "listarMetas"),
   ],
+  ##
   "POST" => [
     "/usuarios" => fn() => load("CadastroDeUsuario", "CadastroUsuario"),
     "/metas" => fn() => load("CadastroDeMetas", "CadastroMeta"),
     "/usuarioLogin" => fn() => load("LoginUsuario", "validaLogin")
   ],
   "PUT" => [
-
+##
   ],
   "DELETE" => [
     "/metas" => fn() => load("DeletarMeta", "deletar"),
