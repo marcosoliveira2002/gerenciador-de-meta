@@ -35,8 +35,9 @@ php -S localhost:8000 -t public
   ],
 ##
   "PUT" => [
-##
+    "/usuarioLogin" => fn() => load("UpdateMeta", "atualizar")
   ],
+##
   "DELETE" => [
     "/metas" => fn() => load("DeletarMeta", "deletar"),
   ]
