@@ -45,7 +45,7 @@ $routes = [
     "/usuarioLogin" => fn() => load("LoginUsuario", "validaLogin")
   ],
   "PUT" => [
-
+   "/usuarioLogin" => fn() => load("UpdateMeta", "atualizar")
   ],
   "DELETE" => [
     "/metas" => fn() => load("DeletarMeta", "deletar"),
