@@ -10,7 +10,7 @@ use PDO;
 
 class UpdateMeta {
 
-  public function atualizar($headers, $body)
+  public function atualizar($body)
   {
     $secretKey = 'asdhasbdhguavbsdhjtrabalhodopeperesasdknasjdnasjd';
     if (!isset($_SERVER['HTTP_AUTHORIZATION'])) {
@@ -32,7 +32,7 @@ class UpdateMeta {
       $id_meta = $body['id_meta'] ?? null;
       $titulo = $body['titulo'] ?? null;
       $descricao = $body['descricao'] ?? null;
-      $status = $body['status'] ?? null;
+      $status = 'P';
 
       if (!$id_meta) {
         echo json_encode(['error' => 'ID da meta não fornecido.']);

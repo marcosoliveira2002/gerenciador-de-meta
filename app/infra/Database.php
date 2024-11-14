@@ -6,11 +6,11 @@ use PDOException;
 
 class Database
 {
-    private $host = 'localhost'; 
-    private $port = '5433';
-    private $dbName = 'gerenciador-de-metas'; 
+    private $host = '192.168.15.121'; 
+    private $port = '5434';
+    private $dbName = 'postgres'; 
     private $username = 'postgres'; 
-    private $password = 'batata';
+    private $password = 'postgres';
     private $connection;
 
     public function __construct()

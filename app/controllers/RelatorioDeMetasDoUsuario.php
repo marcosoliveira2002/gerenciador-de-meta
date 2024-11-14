@@ -9,7 +9,7 @@ use PDO;
 
 class RelatorioDeMetasDoUsuario
 {
-  public function listarMetas($headers)
+  public function listarMetas($params)
   {
 
     $secretKey = 'asdhasbdhguavbsdhjtrabalhodopeperesasdknasjdnasjd';
@@ -28,9 +28,14 @@ class RelatorioDeMetasDoUsuario
 
       $db = new Database();
       $connection = $db->getConnection();
+      $completementoWhere = " AND status = 'P'";
+      if (!empty($params['status'])) {
+        $completementoWhere = "";
+        $completementoWhere = " AND status = '{$params['status']}'";
+      }
 
       $sql = "SELECT id_meta, titulo, descricao, status, data_criacao, data_conclusao 
-              FROM metas WHERE id_usuario = :id_usuario";
+              FROM metas WHERE id_usuario = :id_usuario {$completementoWhere}";
       $stmt = $connection->prepare($sql);
       $stmt->bindParam(':id_usuario', $id_usuario);
 

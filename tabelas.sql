@@ -24,7 +24,7 @@ CREATE TABLE
   Progresso (
     id_progresso SERIAL PRIMARY KEY, 
     id_meta INT NOT NULL, 
-    data_atualizacao DATE DEFAULT CURRENT_DATE,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     descricao_progresso TEXT,
     FOREIGN KEY (id_meta) REFERENCES Metas (id_meta) ON DELETE CASCADE
   );

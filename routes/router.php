@@ -38,16 +38,21 @@ function load(string $controller, string $action)
 $routes = [
   "GET" => [
     "/metas" => fn() => load("RelatorioDeMetasDoUsuario", "listarMetas"),
+    "/progresso" => fn() => load("Progresso", "consultaPorMeta"),
   ],
   "POST" => [
     "/usuarios" => fn() => load("CadastroDeUsuario", "CadastroUsuario"),
     "/metas" => fn() => load("CadastroDeMetas", "CadastroMeta"),
-    "/usuarioLogin" => fn() => load("LoginUsuario", "validaLogin")
+    "/usuarioLogin" => fn() => load("LoginUsuario", "validaLogin"),
+    "/progresso" => fn() => load("Progresso", "cadastrarProgresso")
   ],
   "PUT" => [
-   "/usuarioLogin" => fn() => load("UpdateMeta", "atualizar")
+   "/updateMeta" => fn() => load("UpdateMeta", "atualizar"),
+   "/progresso" => fn() => load("Progresso", "editarProgresso"),
+   "/concluirMeta" => fn() => load("ConcluirMeta", "concluirMeta"),
   ],
   "DELETE" => [
     "/metas" => fn() => load("DeletarMeta", "deletar"),
+    "/progresso" => fn() => load("Progresso", "deletarProgresso"),
   ]
 ];

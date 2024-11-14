@@ -6,15 +6,16 @@ use \Firebase\JWT\JWT;
 
 class LoginUsuario
 {
-
-
   public function validaLogin($postVars)
   {
+    header('Content-Type: application/json'); 
+
     if (!isset($postVars['email']) || !isset($postVars['senha'])) {
-      echo "Dados inválidos.";
+      echo json_encode(['error' => 'Dados inválidos.']);
       return;
     }
-   $secretKey = 'asdhasbdhguavbsdhjtrabalhodopeperesasdknasjdnasjd'; 
+
+    $secretKey = 'asdhasbdhguavbsdhjtrabalhodopeperesasdknasjdnasjd';
 
     $db = new Database();
     $connection = $db->getConnection();
@@ -24,31 +25,27 @@ class LoginUsuario
     $stmt->bindParam(':email', $postVars['email']);
     $stmt->execute();
 
-
     if ($stmt->rowCount() === 0) {
-      echo "Usuário não encontrado.";
+      echo json_encode(['error' => 'Usuário não encontrado.']);
       return;
     }
-
 
     $user = $stmt->fetch();
 
     if (!password_verify($postVars['senha'], $user['senha'])) {
-      echo "Senha incorreta.";
+      echo json_encode(['error' => 'Senha incorreta.']);
       return;
     }
 
-// agr mais 3600 segundos ou seja 1 hora
     $payload = [
       'exp' => time() + 3600, 
       'iat' => time(),
-      'id_usuario' => $user['id_usuario'], 
+      'id_usuario' => $user['id_usuario']
     ];
 
+    $encode = JWT::encode($payload, $secretKey, 'HS256');
 
-    $encode = JWT::encode($payload, $secretKey,'HS256');
 
-
-    echo json_encode($encode);
+    echo json_encode(['token' => $encode]);
   }
 }
